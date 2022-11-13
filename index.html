@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profileMEM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+        }
+        th {
+          color: white;
+        }
+        tr {
+          color: white;
+        }
+        button {
+  background-color: pink;
+  vertical-align: middle;
+  border: none;
+        }
+        
+        button:hover {
+  background-color: violet;
+  color: white;
+         }
+         a:hover {
+  background-color: white;
+  color: white;
+         }
+
+        form {
+    padding: 20px;
+    margin: 30px;
+
+         }
+
+
+        h1{
+  font-family: sans-serif;
+  font-size: 5em;
+  font-weight: bold;
+  text-transform: uppercase;
+ 
+  background-image: url('https://i.pinimg.com/originals/05/26/df/0526df52f22b85c8ef38d2baa11b3ede.gif');
+    
+   background-clip: text;
+  -webkit-background-clip: text;
+   color: transparent;
+}
+        .bg {
+          /* The image used */
+          background-image: url("https://i.pinimg.com/originals/84/da/da/84dada0a5dcfd790700df3dd87897aef.gif");
+        
+          /* Full height */
+          height: 100%; 
+        
+          /* Center and scale the image nicely */
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+        }
+        </style>
+</head>
+<body class="bg">
+    <button class="text-xl p-3 " style=" background-color: Transparent">
+      <a href="http://localhost:5174/BPN_00/" style="color:rgb(231, 155, 227)">HOME</a>
+
+      </button>
+      <button class="text-xl p-3 " style="background-color: Transparent">
+        <a href="http://localhost:5174/BPN_00/profile" style="color:rgb(231, 155, 227)">PROFILE</a>
+  
+        </button>
+
+    <table class="table table-bordered" id="member">
+        <h1 class="text-center">BPN</h1>
+        <tr class="text-center">
+            <th style="font-family:'Courier New'">NAME</th>
+            <th style="font-family:'Courier New'">ANIMAL</th>
+            <th style="font-family:'Courier New'">SONG</th>
+            <th style="font-family:'Courier New'">MOVIE</th>
+            <th style="font-family:'Courier New'">JOB</th>
+            <th style="font-family:'Courier New'">QUOTE</th>
+        </tr>
+
+    </table>
+
+    <form >
+        <div class="formBox">
+        <label for="name" style="color:white">Name</label>
+        <input type="text" id="name" placeholder="Type your name here..">
+    
+      </div>
+      <div class="formBox">
+        <label for="comment" style="color:white">Comment</label>
+        <input type="text" id="comment" placeholder="Type something..">
+    
+      </div>
+     <div class="formBox">
+      <button id="btn">
+        Submit
+      </button>
+     </div>
+    </form>
+    
+
+    <script src="app.js" type="module"></script>
+    
+    
+    <div class="counter" style="padding: 20px; margin: 30px">
+        <button data-action="increase">
+            <p class="text-align: center" style="color:rgb(144, 43, 127)">Like &#128150;</p>
+        </button>
+    
+        <div class="counter-value" style="color:white">0</div>
+    </div>
+
+    <script src="app.js"></script>
+
+
+
+    <script>
+        //create array
+        let comments =[];
+        //create function
+        let a = 0;
+        const addComment = (ev) => {
+          //ไม่ให้มันกลับสู้ค่าเริ่มต้น
+          ev.preventDefault();
+          a +=1
+          let comment = {
+            id: Date.now(),
+            name: document.getElementById("name").value,
+            comment: document.getElementById('comment').value
+          }
+          comments.push(comment);
+          document.querySelector('form').reset();
+        
+          //add to local storage
+          localStorage.setItem(a, JSON.stringify(comments) );
+        
+        }
+        
+        document.addEventListener('DOMContentLoaded', ()=> {
+        document.getElementById('btn').addEventListener('click',addComment);
+        
+        });
+        
+        
+        </script>
+        
+      
+        
+
+
+
+</body>
+
+
+
+</html>
